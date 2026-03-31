@@ -1,0 +1,44 @@
+plugins {
+     id 'com.android.application'
+     id 'org.jetbrains.kotlin.android' // If you use Kotlin
+ }
+ android {
+     namespace 'com.mindumine'
+     compileSdk rootProject.ext.compileSdkVersion
+     defaultConfig {
+         applicationId 'com.mindumine'
+         minSdk rootProject.ext.minSdkVersion
+         targetSdk rootProject.ext.targetSdkVersion
+         versionCode rootProject.ext.versionCode
+         versionName rootProject.ext.versionName
+         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+     }
+     buildTypes {
+         release {
+             minifyEnabled true
+             shrinkResources true
+             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+         }
+         debug {
+             minifyEnabled false
+             shrinkResources false
+         }
+     }
+     compileOptions {
+         sourceCompatibility JavaVersion.VERSION_1_8
+         targetCompatibility JavaVersion.VERSION_1_8
+     }
+     kotlinOptions { 
+         jvmTarget = '1.8'
+     }
+ }
+ dependencies {
+     implementation 'androidx.core:core-ktx:1.12.0'
+     implementation 'androidx.appcompat:appcompat:1.6.1'
+     implementation 'com.google.android.material:material:1.11.0'
+     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+     
+     testImplementation 'junit:junit:4.13.2'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+ }
