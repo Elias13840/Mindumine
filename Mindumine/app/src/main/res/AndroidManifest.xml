@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     package="com.mindumine">  <!-- A. Nombre del paquete de tu aplicación -->
+     <!-- B. Permisos que tu aplicación necesita (si los necesita) -->
+     <!-- Por ejemplo, si tu juego necesita acceder a Internet para multijugador o analíticas -->
+     <uses-permission android:name="android.permission.INTERNET" />
+     <!-- Si necesita escribir en el almacenamiento externo (aunque para Android 10+ hay que ser más específico) -->
+     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+     <!-- C. Características de hardware o software requeridas -->
+     <!-- Indica que la aplicación requiere OpenGL ES 2.0 o superior para gráficos 3D -->
+     <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+     <!-- Si tu juego no funciona bien sin pantalla táctil o teclado (aunque suele ser falso para móviles) -->
+     <uses-feature android:name="android.hardware.touchscreen" android:required="true" />
+     <!-- Si tu juego requiere acelerómetro (por ejemplo, para controles de movimiento) -->
+     <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
+     <application
+         android:allowBackup="true"             <!-- D. Permite que la aplicación sea respaldada automáticamente -->
+         android:dataExtractionRules="@xml/data_extraction_rules" <!-- Reglas de extracción de datos -->
+         android:fullBackupContent="@xml/backup_rules"       <!-- Reglas de respaldo completo -->
+         android:icon="@mipmap/ic_launcher"     <!-- E. Icono de la aplicación (en el cajón de aplicaciones) -->
+         android:label="@string/app_name"       <!-- F. Nombre de la aplicación (visible al usuario) -->
+         android:roundIcon="@mipmap/ic_launcher_round" <!-- Icono redondo para dispositivos compatibles -->
+         android:supportsRtl="true"             <!-- Soporte para layouts de derecha a izquierda -->
+         android:theme="@style/Theme.Mindumine"> <!-- G. Tema visual principal de la aplicación -->
+         <!-- H. Declaración de las actividades de tu aplicación -->
+         <activity
+             android:name=".MainActivity"               <!-- H1. Clase de la actividad principal (com.mindumine.MainActivity) -->
+             android:exported="true"                    <!-- H2. Permite que otras aplicaciones o el sistema la lancen -->
+             android:screenOrientation="landscape"      <!-- H3. Orientación de la pantalla (importante para juegos) -->
+             android:configChanges="orientation|keyboardHidden|screenSize" <!-- H4. Manejo de cambios de configuración -->
+             android:label="@string/app_name"           <!-- H5. Etiqueta de la actividad (puede ser diferente a la del app) -->
+             android:theme="@style/Theme.Mindumine.Fullscreen"> <!-- H6. Tema específico para esta actividad (ej. pantalla completa) -->
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />     <!-- I. Indica que esta es la actividad principal -->
+                 <category android:name="android.intent.category.LAUNCHER" /> <!-- J. Hace que aparezca un icono en el launcher -->
+             </intent-filter>
+         </activity>
+         <!-- Aquí podrías declarar otras actividades, servicios, etc. -->
+         <!-- Por ejemplo, si tuvieras una actividad para la configuración del juego -->
+         <!-- <activity android:name=".SettingsActivity" android:label="Settings" /> -->
+     </application>
+ </manifest>
